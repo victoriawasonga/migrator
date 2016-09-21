@@ -214,7 +214,10 @@
 							              	<thead>
 								                <tr>
 													<th class="check_all_heading">
-														<input name="select_all" value="1" type="checkbox" class="check_all_input">
+														<div class="block">
+														   	<input name="select_all" value="1" type="checkbox" class="check_all_input">
+															<label>Select All</label>
+														</div>
 													</th>
 													<th>TableName</th>
 													<th>Progress</th>

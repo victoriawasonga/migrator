@@ -32,7 +32,11 @@ class Migrator extends MX_Controller {
 	public function get_config($config_file)
 	{	
 		$this->load->config($config_file, TRUE);
-		return $this->config->item($config_file);
+		if(!$this->session->userdata()){
+			$this->session->set_userdata($this->config->item($config_file));
+		}
+		$this->cfg = $this->session->userdata();
+		return $this->cfg;
 	}
 	/*	
 	*	Get database connection
@@ -43,12 +47,12 @@ class Migrator extends MX_Controller {
 		$status = FALSE;
 		if(!$this->input->post()){
 			//Get config parameters
-			$driver = $this->cfg[$category.'_driver'];
-			$username = $this->cfg[$category.'_username'];
-			$password = $this->cfg[$category.'_password'];
-			$hostname = $this->cfg[$category.'_hostname'];
-			$port = $this->cfg[$category.'_port'];
-			$database = $this->cfg[$category.'_database'];
+			$driver = $this->session->userdata($category.'_driver');
+			$username = $this->session->userdata($category.'_username');
+			$password = $this->session->userdata($category.'_password');
+			$hostname = $this->session->userdata($category.'_hostname');
+			$port = $this->session->userdata($category.'_port');
+			$database = $this->session->userdata($category.'_database');
 		}else{
 			//Get posted parameters
 			$driver = $this->input->post('driver');
@@ -70,12 +74,12 @@ class Migrator extends MX_Controller {
 			$this->migration_db[$category] = $db_obj;
 			if($this->input->post()){
 				//Assign posted values to config
-				$this->cfg[$category.'_driver'] = $driver;
-				$this->cfg[$category.'_username'] = $username;
-				$this->cfg[$category.'_password'] = $password;
-				$this->cfg[$category.'_hostname'] = $hostname;
-				$this->cfg[$category.'_port'] = $port;
-				$this->cfg[$category.'_database'] = $database;
+				$this->session->set_userdata($category.'_driver', $driver);
+				$this->session->set_userdata($category.'_username', $username);
+				$this->session->set_userdata($category.'_password', $password);
+				$this->session->set_userdata($category.'_hostname', $hostname);
+				$this->session->set_userdata($category.'_port', $port);
+				$this->session->set_userdata($category.'_database', $database);
 				//Set status
 				$status = TRUE;
 			}

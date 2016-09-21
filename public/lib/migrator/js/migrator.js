@@ -131,10 +131,8 @@ $(function(){
   });  
 
   //Run after all are done
-  var checker = 0;
-  $(document).ajaxStop(function()
-  { 
-    if($('#wizard').smartWizard('currentStep') == 4 && checker == 0){
+  $(document).ajaxStop(function(){ 
+    if($('#wizard').smartWizard('currentStep') == 4 && rows_selected.length > 0){
       //Set migration complete message
       $('#wizard').smartWizard('showMessage','Migration Complete!');
       //Refresh dataTable
@@ -146,8 +144,6 @@ $(function(){
       $('.stepContainer').css('min-height', '300px');
       //Reset rows selected
       rows_selected = [];
-      //Reset checker
-      checker = 1;
     }
   });
 

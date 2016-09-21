@@ -13,8 +13,12 @@ table.display.select.dataTable{
 .dataTables_scrollHeadInner {
 	width: 100% !important;
 }
-
 .swMain .stepContainer div.content {
 	min-height: 300px;
 	height: auto;
+}
+.block{
+	display: inline-block; 
+	width: 100%; 
+	text-align: left;
 }
