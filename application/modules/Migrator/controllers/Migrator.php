@@ -32,7 +32,7 @@ class Migrator extends MX_Controller {
 	public function get_config($config_file)
 	{	
 		$this->load->config($config_file, TRUE);
-		if(!$this->session->userdata()){
+		if($this->session->userdata('source_database') !== FALSE){
 			$this->session->set_userdata($this->config->item($config_file));
 		}
 		$this->cfg = $this->session->userdata();
