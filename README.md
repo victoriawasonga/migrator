@@ -1,5 +1,3 @@
-###########################################
-Migration Toolkit
-###########################################
+# EDDIT to ADT Migration Toolkit
 
-ADT Migrator
+This is a mysql database migrator for EDDIT to ADT systems
