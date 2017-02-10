@@ -196,7 +196,7 @@
 				          		<tr>
 				                    <td align="right">Store :</td>
 				                    <td align="left">
-				                    	<select id="store" name="store" class="txtBox">
+				                    	<select id="stores" class="js-example-basic-multiple txtBox" multiple="multiple">
 				                    		<option value="">Select one</option>
 				                    	</select>
 				                    </td>

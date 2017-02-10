@@ -6,7 +6,7 @@ $config['source_hostname'] = 'localhost';
 $config['source_port'] = 3306;
 $config['source_username'] = 'root';
 $config['source_password'] = 'root';
-$config['source_database'] = 'fdt';
+$config['source_database'] = 'testadt';
 $config['source_driver'] = 'mysqli';
 
 /*ADT(target) database configuration*/
@@ -14,7 +14,7 @@ $config['target_hostname'] = 'localhost';
 $config['target_port'] = 3306;
 $config['target_username'] = 'root';
 $config['target_password'] = 'root';
-$config['target_database'] = 'testadt2';
+$config['target_database'] = 'adt_main_db';
 $config['target_driver'] = 'mysqli';
 
 /*Migration flags*/

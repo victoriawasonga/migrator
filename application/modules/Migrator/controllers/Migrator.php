@@ -117,11 +117,12 @@ class Migrator extends MX_Controller {
 	*	Get stores
 	*	@return json
 	*/
-	public function get_stores()
+	
+	/*public function get_stores()
 	{
 		$search = strip_tags(trim($this->input->get('q')));
 		$sql = "SELECT id,name FROM ccc_store_service_point WHERE name LIKE ? and active = ?";
-		$query = $this->get_db_connection('target')->query($sql, array('%'.$search.'%', 1));
+		$query = $this->get_db_connection('source')->query($sql, array('%'.$search.'%', 1));
 		$list = $query -> result_array();
 		if(count($list) > 0){
 		   	foreach ($list as $key => $value) {
@@ -129,6 +130,25 @@ class Migrator extends MX_Controller {
 		   	} 
 		} 
 		else {
+		   $data[] = array('id' => '0', 'text' => 'No stores Found');
+		}
+		echo json_encode($data);
+	}*/
+	public function get_store()
+	{
+		$sql = "SELECT id,name FROM ccc_store_service_point";
+		$query = $this->get_db_connection('source')->query($sql);
+		$list = $query -> result_array();
+		// $option = '';
+		// echo "<pre>";print_r($list);die;
+		if(count($list) > 0){
+		   	foreach ($list as $key => $value) {
+		   		// $option.='<option value="'.$value['id'].'">'.$value['name'].'</option>';
+				$data[] = array('id' => $value['id'], 'text' => $value['name']);			 	
+		   	} 
+		} 
+		else {
+			// $option.='<option value="0">No stores Found</option>';
 		   $data[] = array('id' => '0', 'text' => 'No stores Found');
 		}
 		echo json_encode($data);

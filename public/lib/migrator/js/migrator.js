@@ -1,3 +1,25 @@
+/*
+*
+Multi select  
+*
+*/
+$("#stores").select2({
+  ajax: {
+    url: "migrator/get_store",
+    processResults: function (data) {
+      data =JSON.parse(data);     
+      return {
+        results: data
+        };
+      },
+    cache: true   
+}
+});
+/*
+*
+Multi select end 
+*
+*/
 $(function(){
 	// Smart Wizard     	
 	$('#wizard').smartWizard({
