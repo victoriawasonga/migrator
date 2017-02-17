@@ -1,0 +1,26 @@
+SELECT 
+patient_number_ccc AS ccc_number,
+first_name,
+lASt_name, 
+other_name, 
+phone	AS phone_number,
+physical AS physical_address,
+(SELECT name FROM gender g WHERE g.id = gender),
+dob AS birth_date, 
+start_height AS initial_height,
+start_weight AS initial_weight,
+date_enrolled AS enrollment_date,
+support_group,
+pregnant AS is_pregnant,
+tb AS is_tb,
+smoke AS is_smoke,
+alcohol AS is_alcohol,
+sms_consent AS is_sms,
+service AS service_id,
+(SELECT code FROM adt_databASe.tbl_facility WHERE name =( SELECT name FROM facilities WHERE facilitycode = facility_code )) AS facility_id,
+supported_by AS supporter_id,
+source AS source_id,
+(SELECT id FROM adt_databASe.tbl_county_sub WHERE name =( SELECT name FROM district WHERE id=pob)) AS county_sub_id,
+who_stage AS who_stage_id FROM patient
+LIMIT {migration_limit}
+OFFSET {migration_offset}//

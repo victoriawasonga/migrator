@@ -235,3 +235,28 @@
 	</table> 
 </body>
 </html>
+<script type="text/javascript">
+	/*
+*
+Multi select  
+*
+*/
+$("#stores").select2({
+  ajax: {
+    url: "migrator/get_store",
+    processResults: function (data) {
+      console.log(data);
+      data =JSON.parse(data);     
+      return {
+        results: data
+        };
+      },
+    cache: true   
+}
+});
+/*
+*
+Multi select end 
+*
+*/
+</script>

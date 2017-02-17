@@ -100,7 +100,7 @@ class Migrator extends MX_Controller {
 	public function get_facilities()
 	{	
 		$search = strip_tags(trim($this->input->get('q')));
-		$sql = "SELECT facilitycode as id,name FROM facilities WHERE name LIKE ?";
+		$sql = "SELECT code as id,name FROM tbl_facility WHERE name LIKE ?";
 		$query = $this->get_db_connection('target')->query($sql, array('%'.$search.'%'));
 		$list = $query -> result_array();
 		if(count($list) > 0){
@@ -118,22 +118,6 @@ class Migrator extends MX_Controller {
 	*	@return json
 	*/
 	
-	/*public function get_stores()
-	{
-		$search = strip_tags(trim($this->input->get('q')));
-		$sql = "SELECT id,name FROM ccc_store_service_point WHERE name LIKE ? and active = ?";
-		$query = $this->get_db_connection('source')->query($sql, array('%'.$search.'%', 1));
-		$list = $query -> result_array();
-		if(count($list) > 0){
-		   	foreach ($list as $key => $value) {
-				$data[] = array('id' => $value['id'], 'text' => $value['name']);			 	
-		   	} 
-		} 
-		else {
-		   $data[] = array('id' => '0', 'text' => 'No stores Found');
-		}
-		echo json_encode($data);
-	}*/
 	public function get_store()
 	{
 		$sql = "SELECT id,name FROM ccc_store_service_point";

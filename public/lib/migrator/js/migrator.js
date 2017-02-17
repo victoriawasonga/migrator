@@ -1,25 +1,4 @@
-/*
-*
-Multi select  
-*
-*/
-$("#stores").select2({
-  ajax: {
-    url: "migrator/get_store",
-    processResults: function (data) {
-      data =JSON.parse(data);     
-      return {
-        results: data
-        };
-      },
-    cache: true   
-}
-});
-/*
-*
-Multi select end 
-*
-*/
+
 $(function(){
 	// Smart Wizard     	
 	$('#wizard').smartWizard({
@@ -379,7 +358,7 @@ function validateStep3(){
     $('#msg_facility').html('').hide();
   }
   // Validate store
-  var store = $('#store').val();
+  var store = $('#stores').val();
   if(!store && store.length <= 0){
     isValid = false;
     $('#msg_store').html('Please select a store').show();
